@@ -215,7 +215,7 @@ export const OutingPassModal: React.FC<OutingPassModalProps> = ({
 
     const newId = `OUT-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
     const finalSubject = aiSubject || `Outing Permission Request: ${studentName} (${hostelRoom})`;
-    const finalBody = aiBody || `Respected Chief Warden Sir,\n\nI am ${studentName}, residing in ${hostelRoom}. I kindly request permission to leave campus for the following outing:\n\n• Purpose: ${finalPurpose}\n• Departure: ${goingDate} at ${goingTime}\n• Expected Return: ${returnDate} at ${returnTime}\n\nMy parent/guardian (${parentEmail}) is CC'd on this email for verification and consent.\n\nThank you for your consideration.\n\nYours sincerely,\n${studentName}\nSilicon Institute of Technology & Management`;
+    const finalBody = aiBody || `Respected Chief Warden Sir,\n\nI am ${studentName}, residing in ${hostelRoom}. I kindly request permission to leave campus for the following outing:\n\n• Purpose: ${finalPurpose}\n• Departure: ${goingDate} at ${goingTime}\n• Expected Return: ${returnDate} at ${returnTime}\n\nMy parent/guardian (${parentEmail}) is CC'd on this email for verification and consent.\n\nThank you for your consideration.\n\nYours sincerely,\n${studentName}\nScholars Institute of Technology & Management`;
 
     const newOuting: OutingRequest = {
       id: newId,
@@ -545,7 +545,7 @@ export const OutingPassModal: React.FC<OutingPassModalProps> = ({
                   type="button"
                   onClick={() => {
                     const finalSubject = aiSubject || `Outing Permission Request: ${studentName} (${hostelRoom})`;
-                    const finalBody = aiBody || `Respected Chief Warden Sir,\n\nI am ${studentName}, residing in ${hostelRoom}. I kindly request permission to leave campus for the following outing:\n\n• Purpose: ${finalPurpose}\n• Departure: ${goingDate} at ${goingTime}\n• Expected Return: ${returnDate} at ${returnTime}\n\nMy parent/guardian (${parentEmail}) is CC'd on this email for verification and consent.\n\nThank you for your consideration.\n\nYours sincerely,\n${studentName}\nSilicon Institute of Technology & Management`;
+                    const finalBody = aiBody || `Respected Chief Warden Sir,\n\nI am ${studentName}, residing in ${hostelRoom}. I kindly request permission to leave campus for the following outing:\n\n• Purpose: ${finalPurpose}\n• Departure: ${goingDate} at ${goingTime}\n• Expected Return: ${returnDate} at ${returnTime}\n\nMy parent/guardian (${parentEmail}) is CC'd on this email for verification and consent.\n\nThank you for your consideration.\n\nYours sincerely,\n${studentName}\nScholars Institute of Technology & Management`;
                     openGmailWebCompose(WARDEN_DEFAULT_EMAIL, parentEmail, finalSubject, finalBody);
                   }}
                   className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-[#2a080e] hover:bg-[#3d0c14] text-amber-200 font-bold text-xs border border-[#800020] transition-all flex items-center justify-center gap-1.5"

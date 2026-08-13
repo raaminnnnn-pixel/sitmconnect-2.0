@@ -30,7 +30,7 @@ export const Hero: React.FC<HeroProps> = ({
         {/* Centered Hero Content Box */}
         <div className="space-y-8 relative">
           
-          {/* Cinematic Background Video Layer - Positioned directly behind the "Fixing Our Campus, Together." content area */}
+          {/* Cinematic Background Video Layer - Positioned directly behind the "Campus Care." content area */}
           <div 
             className="absolute -inset-6 sm:-inset-10 lg:-inset-12 z-0 pointer-events-none overflow-hidden rounded-3xl"
             style={{

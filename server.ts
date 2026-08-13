@@ -24,7 +24,7 @@ async function startServer() {
       const { studentName, hostelRoom, purpose, goingDate, goingTime, returnDate, returnTime, parentEmail } = req.body;
 
       const defaultSubject = `Outing Permission Request: ${studentName || 'Student'} (${hostelRoom || 'Hostel'})`;
-      const defaultBody = `Respected Chief Warden Sir,\n\nI am ${studentName || 'a resident student'}, residing in ${hostelRoom || 'SITM Hostel'}. I kindly request permission to leave campus for the following outing:\n\n• Purpose: ${purpose || 'Personal work'}\n• Departure: ${goingDate || 'Today'} at ${goingTime || '17:30'}\n• Expected Return: ${returnDate || 'Today'} at ${returnTime || '20:30'}\n\nMy parent/guardian (${parentEmail || 'parent@gmail.com'}) is CC'd on this email for verification and consent.\n\nThank you for your consideration.\n\nYours sincerely,\n${studentName || 'Student'}\nSilicon Institute of Technology & Management`;
+      const defaultBody = `Respected Chief Warden Sir,\n\nI am ${studentName || 'a resident student'}, residing in ${hostelRoom || 'SITM Hostel'}. I kindly request permission to leave campus for the following outing:\n\n• Purpose: ${purpose || 'Personal work'}\n• Departure: ${goingDate || 'Today'} at ${goingTime || '17:30'}\n• Expected Return: ${returnDate || 'Today'} at ${returnTime || '20:30'}\n\nMy parent/guardian (${parentEmail || 'parent@gmail.com'}) is CC'd on this email for verification and consent.\n\nThank you for your consideration.\n\nYours sincerely,\n${studentName || 'Student'}\nScholars Institute of Technology & Management`;
 
       if (!process.env.GEMINI_API_KEY) {
         return res.json({
@@ -35,7 +35,7 @@ async function startServer() {
 
       try {
         const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-        const prompt = `You are an AI assistant for a college hostel portal (Silicon Institute of Technology & Management). Write a polite, formal email request from a hostel student to the Chief Warden requesting permission for an outing.
+        const prompt = `You are an AI assistant for a college hostel portal (Scholars Institute of Technology & Management). Write a polite, formal email request from a hostel student to the Chief Warden requesting permission for an outing.
 
 Student Details:
 - Name: ${studentName}
