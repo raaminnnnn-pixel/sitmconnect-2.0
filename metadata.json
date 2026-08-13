@@ -1,0 +1,6 @@
+{
+  "name": "SITMCONNECT",
+  "description": "A modern civic-tech platform for college students to report, track, and resolve campus infrastructure issues.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

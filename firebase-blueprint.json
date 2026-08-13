@@ -1,0 +1,87 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile for students or management team members",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "format": "email", "description": "User email address" },
+        "displayName": { "type": "string", "maxLength": 100, "description": "User full name" },
+        "role": { "type": "string", "enum": ["student", "management"], "description": "User account role" },
+        "department": { "type": "string", "maxLength": 100, "description": "Academic department or management unit" },
+        "phone": { "type": "string", "maxLength": 20, "description": "Contact phone number" },
+        "residenceType": { "type": "string", "enum": ["Hosteller", "Day Scholar"], "description": "Residence category for students" },
+        "roomNo": { "type": "string", "maxLength": 20, "description": "Hostel room number" },
+        "floorNo": { "type": "string", "maxLength": 20, "description": "Hostel floor number" },
+        "employeeId": { "type": "string", "maxLength": 50, "description": "Employee / Staff ID for management" },
+        "designation": { "type": "string", "maxLength": 100, "description": "Job title / Designation for management" },
+        "createdAt": { "type": "string", "description": "Timestamp of profile creation" }
+      },
+      "required": ["uid", "email", "displayName", "role"]
+    },
+    "ProblemReport": {
+      "title": "Problem Report",
+      "description": "A reported campus issue or maintenance ticket",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 50, "description": "Report ID" },
+        "title": { "type": "string", "maxLength": 200, "description": "Issue title" },
+        "category": { "type": "string", "maxLength": 50, "description": "Issue category" },
+        "location": { "type": "string", "maxLength": 200, "description": "Campus location" },
+        "description": { "type": "string", "maxLength": 2000, "description": "Detailed description" },
+        "priority": { "type": "string", "enum": ["Low", "Medium", "High", "Emergency"], "description": "Issue priority" },
+        "status": { "type": "string", "enum": ["Reported", "Seen", "In Progress", "Resolved"], "description": "Current status" },
+        "reportedBy": { "type": "string", "maxLength": 128, "description": "Reporter Firebase UID" },
+        "reporterName": { "type": "string", "maxLength": 100, "description": "Reporter name" },
+        "reporterRole": { "type": "string", "enum": ["student", "management"], "description": "Reporter role" },
+        "reporterDept": { "type": "string", "maxLength": 100, "description": "Reporter department" },
+        "reporterPhone": { "type": "string", "maxLength": 20, "description": "Reporter phone" },
+        "residenceType": { "type": "string", "maxLength": 50, "description": "Residence type" },
+        "roomNo": { "type": "string", "maxLength": 20, "description": "Room number" },
+        "floorNo": { "type": "string", "maxLength": 20, "description": "Floor number" },
+        "reportedAt": { "type": "string", "description": "Timestamp of report" },
+        "timeAgo": { "type": "string", "description": "Relative time string" },
+        "upvotes": { "type": "number", "description": "Upvote count" },
+        "assignedTeam": { "type": "string", "maxLength": 100, "description": "Assigned maintenance team" }
+      },
+      "required": ["id", "title", "category", "location", "description", "priority", "status", "reportedBy"]
+    },
+    "CampusRating": {
+      "title": "Campus Rating",
+      "description": "Student rating for campus health, cleanliness, infrastructure, electricity, water, and internet",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 50, "description": "Rating ID" },
+        "userId": { "type": "string", "maxLength": 128, "description": "Student UID" },
+        "userName": { "type": "string", "maxLength": 100, "description": "Student Name" },
+        "userEmail": { "type": "string", "format": "email", "description": "Student Email" },
+        "department": { "type": "string", "maxLength": 100, "description": "Academic Department" },
+        "residenceType": { "type": "string", "enum": ["Hosteller", "Day Scholar"], "description": "Residence category" },
+        "cleanliness": { "type": "number", "minimum": 1, "maximum": 5, "description": "Cleanliness rating (1-5)" },
+        "infrastructure": { "type": "number", "minimum": 1, "maximum": 5, "description": "Infrastructure rating (1-5)" },
+        "electricity": { "type": "number", "minimum": 1, "maximum": 5, "description": "Electricity rating (1-5)" },
+        "water": { "type": "number", "minimum": 1, "maximum": 5, "description": "Water rating (1-5)" },
+        "internet": { "type": "number", "minimum": 1, "maximum": 5, "description": "Internet / Wi-Fi rating (1-5)" },
+        "overallHealthScore": { "type": "number", "minimum": 1, "maximum": 100, "description": "Calculated overall health score (1-100)" },
+        "feedback": { "type": "string", "maxLength": 1000, "description": "Feedback or suggestions" },
+        "createdAt": { "type": "string", "description": "Timestamp of submission" }
+      },
+      "required": ["id", "userId", "userName", "cleanliness", "infrastructure", "electricity", "water", "internet", "overallHealthScore", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profile collection indexed by Firebase UID"
+    },
+    "/reports/{reportId}": {
+      "schema": { "$ref": "#/entities/ProblemReport" },
+      "description": "Campus problem reports and maintenance tickets"
+    },
+    "/ratings/{ratingId}": {
+      "schema": { "$ref": "#/entities/CampusRating" },
+      "description": "Student ratings and feedback on campus health and facilities"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+/* ==========================================================================
+   CampusFix - CSS3 Stylesheet & Animations
+   Designed for 1st-Semester CSE Capstone Project Presentation
+   ========================================================================== */
+
+/* 1. Root Color Variables */
+:root {
+  --bg-dark-navy: #0b132b;
+  --bg-[#1c2541]: #1c2541;
+  --accent-cyan: #38bdf8;
+  --accent-blue: #3b82f6;
+  --status-red: #ef4444;
+  --status-amber: #f59e0b;
+  --status-emerald: #10b981;
+  --glass-bg: rgba(28, 37, 65, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* 2. Glassmorphism Card Style */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* 3. Keyframe Animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* 4. Responsive CSS Media Query Breakpoints */
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: 2rem;
+  }
+}
